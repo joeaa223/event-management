@@ -1,0 +1,87 @@
+<div class="booking-container">
+    <h2>Select Your Seats</h2>
+    
+    <!-- Event Name -->
+    <div class="event-name">
+        <h3>{{eventName}}</h3>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-container" *ngIf="isLoading">
+        <div class="loading-spinner"></div>
+        <p>Loading seat information...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="error">
+        {{error}}
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" *ngIf="!isLoading && !error">
+        <!-- Price Zones -->
+        <div class="price-zones">
+            <div *ngFor="let price of zonePrices" class="zone-item">
+                <span class="zone-color" [style.background-color]="price.color"></span>
+                <span class="zone-name">{{price.zoneName}}: RM{{price.price}}</span>
+            </div>
+        </div>
+
+        <!-- Stage Area -->
+        <div class="stage">
+            <div class="stage-label">🎭 STAGE 🎭</div>
+        </div>
+
+        <!-- Seating Area -->
+        <div class="seating-area">
+            <div class="seating-container">
+                <div class="rows-container">
+                    <div class="row" *ngFor="let row of seats">
+                        <div class="row-label">{{row[0].row}}</div>
+                        <div class="seats-row">
+                            <div class="seat" *ngFor="let seat of row"
+                                [ngClass]="{
+                                    'pink': seat.zoneColor === 'pink',
+                                    'lightgreen': seat.zoneColor === 'lightgreen',
+                                    'black': seat.zoneColor === 'black',
+                                    'lightblue': seat.zoneColor === 'lightblue',
+                                    'lightsalmon': seat.zoneColor === 'lightsalmon',
+                                    'red': seat.zoneColor === 'red',
+                                    'blue': seat.zoneColor === 'blue',
+                                    'green': seat.zoneColor === 'green',
+                                    'yellow': seat.zoneColor === 'yellow',
+                                    'selected': seat.isSelected,
+                                    'booked': seat.isBooked
+                                }"
+                                (click)="toggleSeatSelection(seat)">
+                                {{seat.col}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selected Seats Information -->
+        <div class="selected-seats-info" *ngIf="selectedSeats.length > 0">
+            <h3>Selected Seats</h3>
+            <div class="selected-seats-list">
+                <div *ngFor="let seat of selectedSeats" class="selected-seat-item">
+                    <span>Row {{seat.row}} - Seat {{seat.col}}</span>
+                    <span>RM{{seat.price}}</span>
+                </div>
+            </div>
+            <div class="total-amount">
+                <strong>Total Amount: RM{{totalAmount}}</strong>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <button class="proceed-btn" (click)="proceedToPayment()" [disabled]="selectedSeats.length === 0">
+                Proceed to Payment
+            </button>
+            <button class="back-btn" (click)="goBack()">Back</button>
+        </div>
+    </div>
+</div>

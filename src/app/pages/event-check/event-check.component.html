@@ -1,0 +1,83 @@
+<!-- Header section with logo, city selector, search bar and login buttons -->
+<header class="app-header">
+    <div class="left-header">
+        <!-- Logo section with click navigation -->
+        <div class="logo" (click)="navigateToHome()">
+            <img src="assets/image/logo.png" alt="Logo" class="logo-image">
+        </div>
+        <!-- City selection dropdown -->
+        <div class="city-selector">
+            <select class="city-dropdown" [(ngModel)]="selectedCity" (change)="onCityChange($event)">
+                <option value="Klang Valley">Klang Valley</option>
+                <option value="Penang">Penang</option>
+                <option value="Johor Bahru">Johor Bahru</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Search bar container -->
+    <div class="search-container">
+        <input type="text" 
+               class="search-bar" 
+               placeholder="Search for Events"
+               [(ngModel)]="searchTerm"
+               (input)="onSearch()">
+    </div>
+   
+    <!-- Right-side buttons container -->
+    <div class="header-buttons">
+        <button class="waitlist-button" (click)="waitlist()">Join Waitlist</button>
+        <button class="organizer-button" (click)="navigateToOrganizerLogin()">Organizer</button>
+        <button class="admin-button" (click)="navigateToAdminLogin()">Admin</button>
+    </div>
+</header>
+
+<!-- Main event list container -->
+<div class="event-list">
+    <!-- Event card template for each event -->
+    <div *ngFor="let event of filteredEvents" class="event-card" (click)="onEventClick(event._id)">
+        <img [src]="event.image" [alt]="event.name" class="event-image">
+        <div class="event-info">
+            <h3 class="event-title">{{event.name}}</h3>
+            <p class="event-datetime">
+                <span class="date">📅 {{event.date}}</span>
+                <span class="time">⏰ {{event.time}}</span>
+            </p>
+            <p class="event-description">{{event.description}}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact information navigation bar -->
+<nav class="contact-nav">
+    <div class="contact-container">
+        <!-- Facebook link -->
+        <div class="contact-item">
+            <a href="https://www.facebook.com" target="_blank" class="contact-link">
+                <i class="fab fa-facebook"></i>
+                <span>Facebook</span>
+            </a>
+        </div>
+        <!-- Phone number -->
+        <div class="contact-item">
+            <a href="tel:+60123456789" class="contact-link">
+                <i class="fas fa-phone"></i>
+                <span>+60 12-345 6789</span>
+            </a>
+        </div>
+        <!-- Email address -->
+        <div class="contact-item">
+            <a href="mailto:info&#64;bit210ems.com" class="contact-link">
+                <i class="fas fa-envelope"></i>
+                <span>info&#64;bit210ems.com</span>
+            </a>
+        </div>
+        <!-- Instagram link -->
+        <div class="contact-item">
+            <a href="https://www.instagram.com" target="_blank" class="contact-link">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+        </div>
+    </div>
+</nav>

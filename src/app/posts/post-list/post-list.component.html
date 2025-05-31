@@ -1,0 +1,7 @@
+<div class="post-list">
+    <div *ngFor="let post of posts" class="post-item">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+    </div>
+    <p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p>
+</div> 

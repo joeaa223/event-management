@@ -1,0 +1,76 @@
+<div class="payment-container">
+  <!-- Event Information -->
+  <div class="event-info">
+    <h2>Order Confirmation</h2>
+    <div class="details">
+      <h3>{{eventName}}</h3>
+      <p><i class="fas fa-calendar"></i> Date and Time: {{eventDate}} {{eventTime}}</p>
+      <p><i class="fas fa-map-marker-alt"></i> Venue: HELP University Subang 2</p>
+    </div>
+  </div>
+
+  <!-- Seat Information -->
+  <div class="seats-section">
+    <h3>Selected Seats</h3>
+    <div class="seats-list">
+      <div class="seat-item" *ngFor="let seat of selectedSeats">
+        <div class="seat-details">
+          <span class="seat-number">Seat: {{seat.seatId}}</span>
+          <span class="original-price">Original Price: RM{{seat.price | number:'1.2-2'}}</span>
+        </div>
+        <div class="ticket-type-selection">
+          <select [(ngModel)]="seat.ticketType" (change)="onTicketTypeChange(seat, seat.ticketType)">
+            <option *ngFor="let type of ticketTypes" [value]="type.id">
+              {{type.name}} (Discount: {{type.discount * 100}}%)
+            </option>
+          </select>
+        </div>
+        <div class="final-price">
+          Final Price: RM{{seat.finalPrice | number:'1.2-2'}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Price Summary -->
+  <div class="price-summary">
+    <div class="summary-item">
+      <span>Total Ticket Price:</span>
+      <span>RM{{originalTotal | number:'1.2-2'}}</span>
+    </div>
+    <div class="summary-item">
+      <span>Discount Amount:</span>
+      <span>-RM{{discountTotal | number:'1.2-2'}}</span>
+    </div>
+    <div class="summary-item total">
+      <span>Total Amount:</span>
+      <span>RM{{finalTotal | number:'1.2-2'}}</span>
+    </div>
+  </div>
+
+  <!-- Payment Methods -->
+  <div class="payment-methods">
+    <h3>Select Payment Method</h3>
+    <div class="method-buttons">
+      <button 
+        [class.selected]="selectedPaymentMethod === 'banking'" 
+        (click)="selectPaymentMethod('banking')">
+        <i class="fas fa-university"></i>
+        Online Banking
+      </button>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="actions">
+    <button class="back-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+    <button 
+      class="pay-btn" 
+      [disabled]="!selectedPaymentMethod" 
+      (click)="processPayment()">
+      Confirm Payment <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</div>

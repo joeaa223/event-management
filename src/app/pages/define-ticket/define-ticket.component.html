@@ -1,0 +1,85 @@
+<h2>Define Ticket Prices by Zone</h2>
+
+<button class="red">VVIP</button>
+<button class="pink">VIP</button>
+<button class="green">PS1</button>
+<button class="lightgreen">PS2</button>
+<button class="blue">PS3</button>
+<button class="lightblue">PS4</button>
+<button class="yellow">PS5</button>
+<button class="lightsalmon">PS6</button>
+
+
+<div class="price-messages">
+    <h3>Price Summary</h3>
+    <div class="seat-price">
+        <div *ngFor="let message of priceMessages" class="price-item">
+            <span class="zone-color" [style.background-color]="message.color"></span>
+            <span class="zone-name">{{message.zoneName}}</span>
+            <span class="price">RM {{message.price}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="stage">🎭 STAGE 🎭</div>
+
+    <div class="seating-container">
+        <div class="rows-container">
+            <div class="row" *ngFor="let row of seats; let i = index">
+                <div class="row-label">{{row[0].row}}</div>
+                <div class="seat" *ngFor="let seat of row; let j = index"
+                    [ngClass]="{
+                        'zone-pink': seat.zoneColor === 'pink',
+                        'zone-lightgreen': seat.zoneColor === 'lightgreen',
+                        'zone-black': seat.zoneColor === 'black',
+                        'zone-lightblue': seat.zoneColor === 'lightblue',
+                        'zone-lightsalmon': seat.zoneColor === 'lightsalmon',
+                        'zone-red': seat.zoneColor === 'red',
+                        'zone-blue': seat.zoneColor === 'blue',
+                        'zone-green': seat.zoneColor === 'green',
+                        'zone-yellow': seat.zoneColor === 'yellow',
+                        'priced': pricedSeats.includes(i + '-' + j)
+                    }"
+                    (click)="selectSeatForPricing(seat.zoneColor)">
+                    {{seat.col}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container2" *ngIf="selectedZoneColor">
+    <div class="zone-info">
+        <div class="selected-zone-color" [style.background-color]="selectedZoneColor"></div>
+        <span class="zone-name">{{getZoneName(selectedZoneColor)}}</span>
+    </div>
+    <div class="price-input">
+        <input type="number" [(ngModel)]="selectedPrice" placeholder="Enter price for {{getZoneName(selectedZoneColor)}}" />
+        <button (click)="applyPriceToZone()" class="apply-btn">Apply Price</button>
+    </div>
+</div>
+
+<div class="container2">
+    <h3>Entry Rules</h3>
+    <button class="btn primary" (click)="openEntryRulesDialog()">Set Entry Rules</button>
+</div>
+
+<div class="modal" *ngIf="showEntryRulesDialog">
+    <div class="modal-content">
+        <h3>Set Entry Rules</h3>
+        <textarea [(ngModel)]="entryRules" placeholder="Enter event rules and requirements..."></textarea>
+        <div class="button-group">
+            <button class="btn primary" (click)="saveEntryRules()">Save</button>
+            <button class="btn secondary" (click)="closeEntryRulesDialog()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="save-container">
+    <button (click)="saveSeats()" class="save-btn">Save All</button>
+</div>
+
+<hr />
+<button (click)="backToEventList()" class="back-btn">🔙 Back to Events</button>
+

@@ -1,0 +1,72 @@
+<h2 class="title">📊 Analytic Report</h2>
+
+<!-- Select the reporting cycle -->
+<form [formGroup]="reportForm">
+  <div class="report-filter">
+    <label for="period">Report Period:</label>
+    <select id="period" formControlName="period" (change)="loadReportData()" class="select-period">
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+    </select>
+  </div>
+</form>
+
+<!-- Loading prompt -->
+<div *ngIf="loading" class="loading">
+  Loading analytics data...
+</div>
+
+<!-- Error prompt -->
+<div *ngIf="error" class="error">
+  {{ error }}
+</div>
+
+<!-- No data message -->
+<div *ngIf="noDataMessage && !loading && !error" class="no-data-message">
+  {{ noDataMessage }}
+  <button class="back-btn" (click)="homePage()">⬅ Back</button>
+</div>
+
+<!-- Report data -->
+<div *ngIf="!loading && !error && reportData && !noDataMessage" class="report-container">
+  <h3 class="report-title">📅 Report for {{ reportForm.value.period | titlecase }} {{ reportData.period ? '(' + reportData.period + ')' : '' }}</h3>
+  
+  <table class="report-table">
+    <tr>
+      <th>📌 Metric</th>
+      <th>📈 Value</th>
+    </tr>
+    <tr>
+      <td>🎟️ Tickets Sold</td>
+      <td>{{ reportData.ticketsSold }}</td>
+    </tr>
+    <tr>
+      <td>💰 Total Revenue</td>
+      <td>RM{{ reportData.revenue | number:'1.2-2' }}</td>
+    </tr>
+    <tr>
+      <td>🏟️ Seat Occupancy</td>
+      <td>{{ reportData.seatOccupancy | number:'1.2-2' }}%</td>
+    </tr>
+  </table>
+  
+  <!-- Chart visualization -->
+  <div class="charts-container">
+    <div class="chart-wrapper">
+      <h4 class="chart-title">Performance Metrics</h4>
+      <div class="chart">
+        <app-metrics-chart [chartData]="chartData"></app-metrics-chart>
+      </div>
+    </div>
+    
+    <div class="chart-wrapper">
+      <h4 class="chart-title">Occupancy Rate</h4>
+      <div class="chart">
+        <app-occupancy-chart [occupancyRate]="reportData.seatOccupancy"></app-occupancy-chart>
+      </div>
+    </div>
+  </div>
+  
+  <button class="back-btn" (click)="homePage()">⬅ Back</button>
+</div>

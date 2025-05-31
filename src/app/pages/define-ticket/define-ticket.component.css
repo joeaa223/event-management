@@ -1,0 +1,524 @@
+h2 {
+    color: white;
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    color: white;
+    font-size: 1.8em;
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.seat-price {
+    color: white;
+}
+
+label {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.container {
+    width: fit-content;  /* 根据内容自适应宽度 */
+    min-width: 95%;     /* 最小宽度 */
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;   /* 允许水平滚动 */
+}
+
+.page-title {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.ticket-form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: #f5f5f5;
+    color: #333;
+    margin-right: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #e8e8e8;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.success-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(255, 255, 255);
+    padding: 15px 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: slideDown 0.5s ease-out forwards;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@keyframes slideDown {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    100% {
+        top: 20px;
+        opacity: 1;
+    }
+}
+
+.ticket-type-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.ticket-type-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.ticket-type-title {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+}
+
+.stage {
+    background: black;
+    color: white;
+    width: 80%;
+    margin: 10px auto 20px;
+    padding: 8px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.seating-container {
+    width: max-content;  /* 根据内容设置宽度 */
+    padding: 15px 0;
+    margin: 0 auto;     /* 居中显示 */
+}
+
+.rows-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: max-content;
+}
+
+.row {
+    display: flex;
+    justify-content: flex-start;  /* 改为左对齐 */
+    align-items: center;
+    margin: 2px 0;
+    flex-wrap: nowrap;
+    padding: 2px 0;
+    width: max-content;  /* 根据内容设置宽度 */
+}
+
+.row-label {
+    margin-right: 8px;
+    font-weight: bold;
+    color: #333;
+    min-width: 25px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.seat {
+    min-width: 25px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2px;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    pointer-events: none;  /* 禁用鼠标事件 */
+}
+
+/* 移除选中和确认状态的样式 */
+.selected, .confirmed, .priced {
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    cursor: default !important;
+}
+
+/* 保持原有的颜色样式 */
+.zone-red { background-color: red; color: white; }
+.zone-pink { background-color: pink; color: black; }
+.zone-lightgreen { background-color: lightgreen; color: black; }
+.zone-green { background-color: green; color: white; }
+.zone-lightblue { background-color: lightblue; color: black; }
+.zone-blue { background-color: blue; color: white; }
+.zone-lightsalmon { background-color: lightsalmon; color: black; }
+.zone-yellow { background-color: yellow; color: black; }
+.zone-black { background-color: black; color: white; }
+
+/* 让按钮更好看 */
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 5px;
+}
+
+/* 区域按钮的颜色 */
+button.red { background-color: red; color: white; }
+button.pink { background-color: pink; color: black; }
+button.green { background-color: green; color: white; }
+button.lightgreen { background-color: lightgreen; color: black; }
+button.blue { background-color: blue; color: white; }
+button.lightblue { background-color: lightblue; color: black; }
+button.yellow { background-color: yellow; color: black; }
+button.lightsalmon { background-color: lightsalmon; color: black; }
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.save-btn {
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    background: linear-gradient(145deg, #45a049, #3d8b40);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container2 {
+    background: linear-gradient(145deg, #290c0c, #383838);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    margin: 20px auto;
+}
+
+.zone-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.selected-zone-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.zone-name {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.price-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.price-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.apply-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.apply-btn:hover {
+    background: #45a049;
+}
+
+.save-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.save-btn {
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-btn {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background: #555;
+}
+
+.seat {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+.seat:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Keep your existing styles and add these new ones */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.modal-content textarea {
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn.primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn.secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.price-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.zone-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.zone-name {
+    margin-right: 15px;
+    font-weight: 500;
+    min-width: 80px;
+    color: white;
+}
+
+.price {
+    font-weight: bold;
+    color: white;
+    margin-left: -50px;
+}

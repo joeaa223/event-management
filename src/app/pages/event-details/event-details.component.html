@@ -1,0 +1,60 @@
+<header class="app-header">
+    <div class="left-header">
+        <div class="logo" (click)="navigateToHome()">
+            <img src="assets/image/logo.png" alt="Logo" class="logo-image">
+        </div>
+        <div class="city-selector">
+            <select class="city-dropdown" [(ngModel)]="selectedCity" (change)="onCityChange($event)">
+                <option value="Klang Valley">Klang Valley</option>
+                <option value="Penang">Penang</option>
+                <option value="Johor Bahru">Johor Bahru</option>
+            </select>
+        </div>
+    </div>
+  
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search for Events">
+    </div>
+
+    <div class="waitlist-header">
+        <button class="waitlist-button" (click)="waitlist()">Join Waitlist</button>
+    </div>
+</header>
+  
+<div class="event-container" *ngIf="event">
+    <div class="banner">
+        <img [src]="event.image" [alt]="event.name" class="concert-image">
+    </div>
+
+    <h1 class="event-title">{{event.name}}</h1>
+
+    <hr>
+
+    <div class="event-detail">
+        <h2>Date & Time:</h2>
+        <p>{{event.date}} {{event.time}}</p>
+    </div>
+
+    <div class="event-detail">
+        <h2>Description:</h2>
+        <p>{{event.description}}</p>
+    </div>
+
+    <div class="entry-rules-container">
+        <h2>Entry Rules</h2>
+        <div class="rules-list">
+            <p *ngFor="let rule of formattedRules">{{rule}}</p>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button (click)="goToBooking()">BOOK NOW</button>
+        <button (click)="backToEvent()">BACK</button>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+<div class="event-form-container">
+    <h2>Create New Event</h2>
+
+    <div class="form-group">
+        <label>Event Name:</label>
+        <input type="text" [(ngModel)]="event.name" required placeholder="Enter event name">
+    </div>
+
+    <div class="form-group">
+        <label>Event Date:</label>
+        <input type="date" [(ngModel)]="event.date" [min]="today" (change)="isDateDisabled(event.date) ? event.date = '' : null" required>
+    </div>
+
+    <div class="form-group">
+        <label>Event Time:</label>
+        <input type="time" [(ngModel)]="event.time" required>
+    </div>
+
+    <div class="form-group">
+        <label>Event Description:</label>
+        <textarea [(ngModel)]="event.description" placeholder="Enter event details..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Upload a Poster:</label>
+        <input type="file" (change)="onFileChange($event)">
+        <img *ngIf="event.image" [src]="event.image" class="preview-image">
+    </div>
+
+    <div class="button-group">
+        <button class="btn primary" (click)="createEvent()">Create Event</button>
+        <button class="btn secondary" (click)="eventOrganizerPage()">⬅ Back</button>
+    </div>
+</div>

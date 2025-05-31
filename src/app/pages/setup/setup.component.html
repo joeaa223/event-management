@@ -1,0 +1,125 @@
+<div class="ticket-setup-container">
+  <h2 class="ticket-setup-title">🎫 Event Ticket Setup</h2>
+  
+  <form [formGroup]="setupForm" (ngSubmit)="onSubmit()" class="ticket-setup-form">
+    
+    <!-- Event Name -->
+    <div class="form-group">
+      <label for="eventName">📅 Event Name:</label>
+      <input id="eventName" formControlName="eventName" required class="input-field" />
+      <div *ngIf="setupForm.controls['eventName'].invalid && setupForm.controls['eventName'].touched">
+        <small class="error">❌ Event Name is required!</small>
+      </div>
+    </div>
+
+    <!-- Seating Selection -->
+    <div class="form-group">
+      <label for="place">📍 Seating Selection:</label>
+      <select id="place" formControlName="place" class="select-field">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+        <option value="H">H</option>
+        <option value="I">I</option>
+        <option value="J">J</option>
+        <option value="K">K</option>
+        <option value="L">L</option>
+        <option value="AA">AA</option>
+        <option value="BB">BB</option>
+        <option value="CC">CC</option>
+        <option value="DD">DD</option>
+        <option value="EE">EE</option>
+      </select>
+    </div>
+
+    <!-- Ticket Type -->
+    <div class="form-group">
+      <label for="ticketType">🎟️ Ticket Type:</label>
+      <select id="ticketType" formControlName="ticketType" class="select-field">
+        <option value="Normal Ticket">Normal Ticket</option>
+        <option value="VIP">VIP</option>
+        <option value="Senior Citizen">Senior Citizen</option>
+        <option value="Child">Child</option>
+      </select>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group">
+      <label for="price">💰 Price (MYR):</label>
+      <input id="price" type="number" formControlName="price" required class="input-field" />
+      <div *ngIf="setupForm.controls['price'].invalid && setupForm.controls['price'].touched">
+        <small class="error">❌ Price is required and must be greater than zero!</small>
+      </div>
+    </div>
+
+    <!-- Max Tickets -->
+    <div class="form-group">
+      <label for="maxTickets">🎫 Max Tickets:</label>
+      <input id="maxTickets" type="number" formControlName="maxTickets" required class="input-field" />
+      <div *ngIf="setupForm.controls['maxTickets'].invalid && setupForm.controls['maxTickets'].touched">
+        <small class="error">❌ Maximum Tickets is required and must be greater than zero!</small>
+      </div>
+    </div>
+
+    <!-- Promo Code -->
+    <div class="form-group">
+      <label for="promoCode">🔖 Promo Code (optional):</label>
+      <input id="promoCode" formControlName="promoCode" class="input-field" />
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-btn">
+      <button type="submit" class="save-button">💾 Save Ticket Setup</button>
+    </div>
+
+  </form>
+
+  <!-- Success & Error Messages -->
+  <p *ngIf="successMessage" class="success-message">✅ {{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>
+
+<!-- 登录表单 -->
+<div class="login-container">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                id="email"
+                formControlName="email"
+                class="form-control">
+            <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+                <small class="error">Please enter a valid email</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                id="password"
+                formControlName="password"
+                class="form-control">
+            <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+                <small class="error">Password is required</small>
+            </div>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="errorMessage">
+            {{ errorMessage }}
+        </div>
+
+        <div class="alert alert-success" *ngIf="successMessage">
+            {{ successMessage }}
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+</div>
+

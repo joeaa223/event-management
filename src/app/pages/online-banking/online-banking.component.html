@@ -1,0 +1,47 @@
+<div class="banking-container">
+  <div class="payment-header">
+    <h2>Google Pay Payment</h2>
+    <div class="payment-details">
+      <p class="event-name">Event: {{eventName}}</p>
+      <p class="seats">Seats: {{seats}}</p>
+      <p class="amount">Amount: RM{{amount | number:'1.2-2'}}</p>
+    </div>
+  </div>
+
+  <div class="email-group">
+    <label>Email Address</label>
+    <input 
+      type="email" 
+      [(ngModel)]="email"
+      (input)="validateEmailInput()"
+      [class.is-invalid]="emailError"
+      [class.is-valid]="email && !emailError"
+      placeholder="example@email.com"
+      required>
+    <small *ngIf="emailError" class="error-message">{{emailError}}</small>
+    <small *ngIf="email && !emailError" class="success-message">Email format is valid</small>
+    <small *ngIf="!email" class="info-message">We'll send your receipt to this email</small>
+  </div>
+
+  <div class="payment-section">
+    <div id="google-pay-button"></div>
+  </div>
+
+  <div class="bank-info">
+    <div class="info-item">
+      <i class="fas fa-shield-alt"></i>
+      <span>Secure payment powered by Google Pay</span>
+    </div>
+    <div class="info-item">
+      <i class="fas fa-lock"></i>
+      <span>Your payment information is protected</span>
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    <button class="back-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
+  </div>
+</div>
+  

@@ -1,0 +1,65 @@
+<div class="container">
+    <h2>Admin Analytics Dashboard</h2>
+
+    <div *ngIf="loading" class="loading">
+        Loading event analytics...
+    </div>
+
+    <div *ngIf="error" class="error">
+        {{ error }}
+    </div>
+
+    <!-- Summary Charts -->
+    <div *ngIf="!loading && !error && events.length > 0" class="summary-charts">
+        <div class="chart-container">
+            <h3>Revenue by Event</h3>
+            <div class="chart-wrapper">
+                <app-revenue-chart [events]="events"></app-revenue-chart>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Ticket Sales by Event</h3>
+            <div class="chart-wrapper">
+                <app-ticket-sales-chart [events]="events"></app-ticket-sales-chart>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!loading && !error" class="analytics-content">
+        <div class="events-list">
+            <div *ngFor="let event of events" class="event-card">
+                <div class="event-header">
+                    <h3>{{ event.name }}</h3>
+                    <p class="organizer">Organizer: {{ event.organizerName }}</p>
+                </div>
+
+                <div class="event-details">
+                    <div class="detail-row">
+                        <span class="label">Date:</span>
+                        <span class="value">{{ formatDate(event.date) }}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Time:</span>
+                        <span class="value">{{ event.time }}</span>
+                    </div>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-item">
+                        <div class="analytics-value">{{ event.ticketsSold }}</div>
+                        <div class="analytics-label">Tickets Sold</div>
+                    </div>
+                    <div class="analytics-item">
+                        <div class="analytics-value">RM {{ formatCurrency(event.totalRevenue) }}</div>
+                        <div class="analytics-label">Total Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn">
+        <button (click)="back()">Back to Home</button>
+    </div>
+</div>

@@ -38,6 +38,22 @@ app.use((req, res, next) => {
     next();
 });
 
+// 添加根路由
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Welcome to Event Management System API',
+        version: '1.0.0',
+        status: 'running',
+        endpoints: {
+            auth: '/api/login',
+            organizers: '/api/organizers',
+            events: '/api/events',
+            tickets: '/api/events/:eventId/tickets',
+            payments: '/api/payments'
+        }
+    });
+});
+
 // 添加组织者注册路由
 app.post('/api/register-organizer', async (req, res, next) => {
     try {
@@ -897,8 +913,6 @@ app.post('/api/payments', async (req, res) => {
     });
   }
 });
-
-
 
 // 导出 app
 module.exports = app;

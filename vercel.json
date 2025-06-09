@@ -4,21 +4,12 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "angular.json",
-      "use": "@vercel/angular",
-      "config": { "browserTarget": "BIT210_EMS:build:production" }
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "server.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "dist/bit210-ems/$1"
+      "dest": "server.js"
     }
   ]
 } 

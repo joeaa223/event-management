@@ -160,7 +160,7 @@ export class OnlineBankingComponent implements OnInit {
       const paymentData = await this.paymentsClient.loadPaymentData(paymentDataRequest);
       
       // 发送支付数据到后端
-      const response = await fetch('http://localhost:3000/api/payments/online-banking', {
+      const response = await fetch('https://event-management-production-ec59.up.railway.app/api/payments/online-banking', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -263,7 +263,7 @@ export class OnlineBankingComponent implements OnInit {
 
     console.log('Sending payment data:', paymentData);
 
-    fetch('http://localhost:3000/api/payments/online-banking', {
+    fetch('https://event-management-production-ec59.up.railway.app/api/payments/online-banking', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

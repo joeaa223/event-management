@@ -10,7 +10,7 @@ export class AuthService {
     login(email: string, password: string) {
         const loginData = { email: email, password: password };
         return this.http.post<{message: string, user: any}>(
-            'http://localhost:3001/api/login',
+            'https://event-management-production-ec59.up.railway.app/api/login',
             loginData
         );
     }

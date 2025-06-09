@@ -29,7 +29,7 @@ export class LoginOrganizer {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      this.http.post<{message: string, user: any}>('http://localhost:3001/api/login', this.registerForm.value)
+      this.http.post<{message: string, user: any}>('https://event-management-production-ec59.up.railway.app/api/login', this.registerForm.value)
         .subscribe(
           response => {
             console.log('Login successful:', response);

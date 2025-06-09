@@ -44,7 +44,7 @@ export class AdminAnalyticComponent implements OnInit {
 
   fetchEventAnalytics() {
     this.loading = true;
-    this.http.get<Event[]>('http://localhost:3001/api/admin/events-analytics')
+    this.http.get<Event[]>('https://event-management-production-ec59.up.railway.app/api/admin/events-analytics')
       .subscribe({
         next: (data) => {
           this.events = data;

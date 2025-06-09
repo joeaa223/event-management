@@ -7,7 +7,7 @@ import { Waitlist } from '../models/waitlist.model';
   providedIn: 'root'
 })
 export class WaitlistService {
-  private apiUrl = 'http://localhost:3000/api/waitlist';
+  private apiUrl = 'https://event-management-production-ec59.up.railway.app/api';
 
   constructor(private http: HttpClient) {}
 

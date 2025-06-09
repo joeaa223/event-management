@@ -9,7 +9,7 @@ export class OrganizerService {
 
     registerOrganizer(organizerData: any) {
         return this.http.post<{message: string, organizer: any}>(
-            'http://localhost:3001/api/register-organizer',
+            'https://event-management-production-ec59.up.railway.app/api/register-organizer',
             organizerData
         );
     }

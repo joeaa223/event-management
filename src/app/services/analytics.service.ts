@@ -15,7 +15,7 @@ export interface AnalyticsData {
   providedIn: 'root'
 })
 export class AnalyticsService {
-  private apiUrl = 'http://localhost:3001/api';
+  private apiUrl = 'https://event-management-production-ec59.up.railway.app/api';
 
   constructor(private http: HttpClient) {}
 

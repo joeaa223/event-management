@@ -45,7 +45,10 @@ export class EventListComponent implements OnInit {
     private eventService: EventService,
     private ticketService: TicketService,
     private authService: AuthService
-  ) {}
+  ) {
+    // 测试直接使用 fetch API
+    this.testFetchAPI();
+  }
 
   ngOnInit() {
     this.loadUserData();
@@ -181,6 +184,18 @@ export class EventListComponent implements OnInit {
         );
       }
     }
+  }
+
+  // 添加测试方法
+  testFetchAPI() {
+    fetch('https://event-management-production-ec59.up.railway.app/api/events')
+      .then(res => res.json())
+      .then(data => {
+        console.log('Fetch API test result:', data);
+      })
+      .catch(error => {
+        console.error('Fetch API test error:', error);
+      });
   }
 }
 

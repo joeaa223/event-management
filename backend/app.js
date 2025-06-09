@@ -11,8 +11,22 @@ const { sendCredentialsEmail, sendETicketEmail, verifyEmailExists, sendWaitlistE
 
 const app = express();
 
+// CORS 配置
+const corsOptions = {
+    origin: [
+        'http://localhost:4200',  // Angular 开发服务器
+        'https://event-management-production-ec59.up.railway.app',  // Railway 部署的域名
+        'https://joeaa223.github.io',  // GitHub Pages 域名
+        'https://event-management-five-omega.vercel.app'  // Vercel 部署的域名
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+    credentials: true,
+    maxAge: 86400  // 预检请求结果缓存24小时
+};
+
 // 启用 CORS
-app.use(cors());
+app.use(cors(corsOptions));
 
 // 解析请求体
 app.use(bodyParser.json());
